@@ -8,10 +8,9 @@ class AdvertisementFilter(filters.FilterSet):
     creator = filters.CharFilter(field_name='creator__username')
     created_at = filters.DateFromToRangeFilter(field_name='created_at')
 
-
     class Meta:
         model = Advertisement
-        fields = ('creator', 'created_at',)
+        fields = ('creator', 'status', 'created_at',)
 
 
 class FavoriteAdvertisementsFilter(filters.FilterSet):

@@ -34,5 +34,8 @@ class Advertisement(models.Model):
 class UserFavoriteAdvertisements(models.Model):
     """Избранные объявления"""
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    advertisement = models.OneToOneField(Advertisement, on_delete=models.CASCADE)
+    advertisement = models.ForeignKey(Advertisement, on_delete=models.CASCADE)
     added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'advertisement')
